@@ -15,7 +15,7 @@ import UserList from "./routes/UserList";
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <UserList/>,
+        element: <App/>,
     },
     {
         path: "/login",
