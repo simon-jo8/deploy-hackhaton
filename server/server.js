@@ -3,9 +3,6 @@ const cors = require('cors');
 const express = require('express');
 const app = express();
 const http = require('http').Server(app);
-import ReactDOMServer from "react-dom/server";
-import { StaticRouter } from "react-router-dom/server";
-
 const socketIO = require('socket.io')(http, {
   cors: {
     origin: "*",
@@ -20,14 +17,6 @@ app.use(cors());
 
 app.get("/api", (req, res) => {
   res.json({ message: "Hello from server" });
-});
-app.get("*", (req, res) => {
-  let html = ReactDOMServer.renderToString(
-      <StaticRouter location={req.url}>
-        <App />
-      </StaticRouter>
-  );
-  res.send("<!DOCTYPE html>" + html);
 });
 
 let connectedUsers = [];
